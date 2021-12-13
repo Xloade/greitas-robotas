@@ -1,10 +1,11 @@
 #VRML_SIM R2021b utf8
 WorldInfo {
+  basicTimeStep 16
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation 0.9916247837064714 -0.09030705302758693 0.09233051777482096 1.6013612117989189
-  position -0.0731695566776926 -1.794586323767959 -0.24841431107812437
+  orientation -0.20636564706538338 0.9432768349615985 0.2600808188546683 2.179598010084705
+  position 1.6052028797523048 1.0405595615258447 -1.0934194109695903
 }
 TexturedBackground {
 }
@@ -30,46 +31,42 @@ Solid {
   ]
 }
 E-puck {
-  hidden translation_1 -0.026000000000000353 0.02 0
-  hidden rotation_1 1 0 0 2.1181716839234443
-  hidden translation_2 0.025999999999999846 0.02 0
-  hidden rotation_2 1 0 0 1.9711419398633536
-  translation 0.11747471253522812 -6.396332654375926e-05 -0.30930255846879573
+  translation 0.347475 -6.97501e-05 -0.310706
   rotation 1.1152851028233464e-05 0.9999999998409236 -1.3920015467365885e-05 1.5769079734111155
   controller "my_controller"
   groundSensorsSlot [
     DistanceSensor {
-      translation -0.001 -0.03 -0.03
+      translation -0.001 -0.03 0.01
       name "l3_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 0 -0.05
+      translation -0.001 0 -0.01
       name "center_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 0.03 -0.03
+      translation -0.001 0.03 0.01
       name "r3_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 0.025 -0.04
+      translation -0.001 0.025 0
       name "r2_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 0.015 -0.047
+      translation -0.001 0.015 -0.007
       name "r1_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 -0.025 -0.04
+      translation -0.001 -0.025 0
       name "l2_ir"
       type "infra-red"
     }
     DistanceSensor {
-      translation -0.001 -0.015 -0.047
+      translation -0.001 -0.015 -0.007
       name "l1_ir"
       type "infra-red"
     }
