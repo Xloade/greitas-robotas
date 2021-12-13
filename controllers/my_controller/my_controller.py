@@ -78,12 +78,18 @@ def fallowLine(time_step, max_speed,robot, devices, first_Time):
         
         changeSpeed(devices.left_motor, devices.right_motor, left_speed, right_speed,history, time_step, steps_Passed)
     return history
-def history_average(history):
+def history_average(history, average_range):
     rez = list()
-    for i in range(0,len(history)-2,3):
-        new_left_speed = ((history[i][0])+(history[i][0])+(history[i][0]))/3
-        new_right_speed = ((history[i][1])+(history[i][1])+(history[i][1]))/3
-        rez.append((new_left_speed,new_right_speed,history[i][2]*3))
+    for i in range(0,len(history)-average_range+1,average_range):
+        new_left_speed = 0
+        new_right_speed = 0
+        for k in range(average_range):
+            new_left_speed += history[i+k][0]
+            new_right_speed += history[i+k][1]
+        new_left_speed = new_left_speed/average_range
+        new_right_speed = new_right_speed/average_range
+        
+        rez.append((new_left_speed,new_right_speed,history[i][2]*average_range))
     return rez
 def repeat(history,robot, devices, speed_up):
     steps_Passed = 0
@@ -100,7 +106,7 @@ def run_robot(robot):
     history = fallowLine(time_step, max_speed,robot, devices, False)
     print("-------------------------------Start-----------------------------------")
     history = changeToRelitiveTime(history)
-    # history = history_average(history)
+    history = history_average(history,30)
     repeat(history,robot, devices, 2)
     devices.left_motor.setVelocity(0.0)
     devices.right_motor.setVelocity(0.0)
